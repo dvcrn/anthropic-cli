@@ -6,10 +6,20 @@ This is a command line tool that allows you to interact with the Anthropic API u
 
 ![screenshot](./screenshot.png)
 
-## Prerequisites
+## Features
 
-- Python 3.x
-- Anthropic Python SDK (`pip install anthropic`)
+- Send text messages to the Anthropic API
+- Include images (PNG, JPEG, or PDF) in the messages
+- Specify various parameters such as model, system message, temperature, top-k, top-p, and max tokens
+- Parse PDF files and convert into a JPEG image for processing (requires Poppler)
+
+### Installing Poppler
+
+Poppler is a separate library that is required by the `pdf2image` library for converting PDF files to images. The installation process for Poppler varies depending on your operating system.
+
+Please check https://pdf2image.readthedocs.io/en/latest/installation.html for installation instructions.
+
+You do not need to install Poppler if you don't plan on passing PDFs into the vision API.
 
 ## Setup
 
