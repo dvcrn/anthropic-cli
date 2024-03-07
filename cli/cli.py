@@ -22,8 +22,8 @@ def main():
         sys.exit(0)
 
     client = Anthropic(api_key=api_key)
-
     messages = []
+
     if args.message:
         for role, content in args.message:
             message = {"role": role, "content": content}
@@ -35,11 +35,17 @@ def main():
             print(f"Image file not found: {args.image}")
             return
 
+        if image_path.suffix.lower() not in [".png", ".jpg", ".jpeg"]:
+            print(f"Unsupported image format: {image_path.suffix}")
+            return
+
+        media_type = "image/png" if image_path.suffix.lower() == ".png" else "image/jpeg"
+
         image_message = {
             "type": "image",
             "source": {
                 "type": "base64",
-                "media_type": "image/png",
+                "media_type": media_type,
                 "data": image_path,
             },
         }
