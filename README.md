@@ -4,6 +4,8 @@ This is a command line tool that allows you to interact with the Anthropic API u
 
 **NOTE**: This CLI has been programmed by Claude 3
 
+![screenshot](./screenshot.png)
+
 ## Prerequisites
 
 - Python 3.x
