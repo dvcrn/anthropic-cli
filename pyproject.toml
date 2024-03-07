@@ -1,10 +1,6 @@
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "anthropic-cli"
-version = "0.2.0"
+version = "0.2.3"
 description = "A command-line tool for interacting with the Anthropic API"
 authors = [
     { name = "David Mohl", email = "git@d.sh" },
@@ -24,6 +20,7 @@ classifiers = [
 ]
 keywords = ["anthropic", "api", "cli", "command-line"]
 requires-python = ">=3.7"
+dependencies = ["anthropic", "pdf2image"]  
 
 [project.urls]
 Homepage = "https://github.com/dvcrn/anthropic-cli"
@@ -34,9 +31,6 @@ anthropic-cli = "cli.cli:main"
 
 [tool.setuptools]
 packages = ["cli"]
-
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
 
 [tool.mypy]
 strict = true
