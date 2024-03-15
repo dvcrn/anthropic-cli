@@ -93,10 +93,12 @@ python anthropic_cli.py [options]
 
 5. Stack with other command-line tools:
 
-  ```bash
-	S=$(git diff)
-  python anthropic-cli -g user "What is a good commit message for the following? $S"
-  ```
+    ```bash
+    S=$(git diff)
+    python anthropic-cli -g user "What is a good commit message for the following? $S"
+    ```
+
+    This command will fetch the diff in a git repository and send it to the agent to generate a commit message.
 
 ## Output
 
