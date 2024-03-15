@@ -91,6 +91,13 @@ python anthropic_cli.py [options]
 
    This command uses the "claude-3-opus-20240229" model, sets a system message, adjusts the temperature to 0.8, and limits the maximum number of tokens in the response to 500.
 
+5. Stack with other command-line tools:
+
+  ```bash
+	S=$(git diff)
+  python anthropic-cli -g user "What is a good commit message for the following? $S"
+  ```
+
 ## Output
 
 The command line tool will send the messages and image (if provided) to the Anthropic API and print the text content of the response to the console.
