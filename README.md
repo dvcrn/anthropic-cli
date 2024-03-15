@@ -24,7 +24,7 @@ You do not need to install Poppler if you don't plan on passing PDFs into the vi
 ## Setup
 
 ```
-pip install anthropic-sdk
+pip install git+https://github.com/dvcrn/anthropic-cli
 ```
 
 Set your Anthropic API key as an environment variable named `ANTHROPIC_API_KEY`. You can do this by running the following command in your terminal or adding it to your shell configuration file (e.g., `.bashrc`, `.zshrc`):
