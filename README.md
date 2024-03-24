@@ -24,7 +24,7 @@ You do not need to install Poppler if you don't plan on passing PDFs into the vi
 ## Setup
 
 ```
-pip install anthropic-sdk
+pip install git+https://github.com/dvcrn/anthropic-cli
 ```
 
 Set your Anthropic API key as an environment variable named `ANTHROPIC_API_KEY`. You can do this by running the following command in your terminal or adding it to your shell configuration file (e.g., `.bashrc`, `.zshrc`):
@@ -90,6 +90,15 @@ python anthropic_cli.py [options]
    ```
 
    This command uses the "claude-3-opus-20240229" model, sets a system message, adjusts the temperature to 0.8, and limits the maximum number of tokens in the response to 500.
+
+5. Stack with other command-line tools:
+
+    ```bash
+    S=$(git diff)
+    python anthropic-cli -g user "What is a good commit message for the following? $S"
+    ```
+
+    This command will fetch the diff in a git repository and send it to the agent to generate a commit message.
 
 ## Output
 
