@@ -16,6 +16,7 @@ def main():
     parser.add_argument("-k", "--top_k", type=int, help="Top-k sampling")
     parser.add_argument("-p", "--top_p", type=float, help="Top-p sampling")
     parser.add_argument("-x", "--max_tokens", type=int, default=1024, help="Maximum number of tokens in the response (default: 1024)")
+    parser.add_argument("-f", "--filetype", type=str, help="Overwrite automatic detection of filetype (pdf, png, jpeg, jpg)")
     args = parser.parse_args()
 
     api_key = os.environ.get("ANTHROPIC_API_KEY")
@@ -37,7 +38,14 @@ def main():
             print(f"File not found: {args.image}")
             return
 
-        if image_path.suffix.lower() == ".pdf":
+        type_suffix = image_path.suffix.lower()
+        if args.filetype:
+            type_suffix = args.filetype
+        
+        if not type_suffix.startswith('.'):
+            type_suffix = '.' + type_suffix
+        
+        if type_suffix == ".pdf":
             with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as temp_file:
                 temp_file_path = Path(temp_file.name)
 
@@ -51,7 +59,7 @@ def main():
                 image_path = Path(temp_file_path)
                 temp_file.close()
 
-        elif image_path.suffix.lower() not in [".png", ".jpg", ".jpeg"]:
+        elif type_suffix not in [".png", ".jpg", ".jpeg"]:
             print(f"Unsupported file format: {image_path.suffix}")
             return
 
